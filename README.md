@@ -1,5 +1,7 @@
 # Roku widget sample
 
+Original source code from: https://github.com/rokudev/samples/tree/master/getting%20started/SceneGraphTutorial
+
 ## SceneGraphTutorial
 
 This example demonstrates how to create a typical Roku SceneGraph application. This application presents all the various node classes and design/development principles for Roku SceneGraph. The goal of this example is to enbale you to quickly select node classes and design ideas for *your* application.
