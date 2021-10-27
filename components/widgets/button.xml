@@ -1,0 +1,54 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<component name = "ButtonExample" extends="Group" initialFocus="exampleButton" >
+
+  <script type = "text/brightscript" >
+
+    <![CDATA[
+
+    sub init()
+      examplerect = m.top.boundingRect()
+      centerx = (1280 - examplerect.width) / 2
+      centery = (720 - examplerect.height) / 2
+      m.top.translation = [ centerx, centery ]
+    end sub
+
+    function onKeyEvent(key as String, press as Boolean) as Boolean
+      if press then
+        if key = "down"
+          other = m.top.findNode("otherExampleButton")
+          other.setFocus(true)
+          return true
+        else if key = "up"
+          original = m.top.findNode("exampleButton")
+          original.setFocus(true)
+          return true
+        end if
+      end if
+
+      return false
+    end function
+
+    ]]>
+
+  </script>
+
+  <children >
+
+    <Button 
+      id = "exampleButton" 
+      text = "Example Button" 
+      showFocusFootprint = "true" 
+      minWidth = "240" />
+    <Button 
+      id = "otherExampleButton" 
+      text = "Other Example Button" 
+      showFocusFootprint = "true" 
+      translation="[0, 200]"
+      minWidth = "240" />
+
+  </children>
+
+</component>
