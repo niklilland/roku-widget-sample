@@ -9,11 +9,34 @@
     <![CDATA[
 
     sub init()
-      examplerect = m.top.boundingRect()
-      centerx = (1280 - examplerect.width) / 2
-      centery = (720 - examplerect.height) / 2
-      m.top.translation = [ centerx, centery ]
+      m.markupgrid = m.top.findNode("exampleMarkupGrid")
+      m.exampleMiniKeyboard = m.top.findNode("exampleMiniKeyboard")
+
+      m.readMarkupGridTask = createObject("roSGNode", "ContentReader")
+      m.readMarkupGridTask.contenturi = "http://www.sdktestinglab.com/Tutorial/content/rendergrid.xml"
+      m.readMarkupGridTask.observeField("content", "showmarkupgrid")
+      m.readMarkupGridTask.control = "RUN"
     end sub
+
+    sub showmarkupgrid()
+      m.markupgrid.content = m.readMarkupGridTask.content
+      m.markupgrid.content.getChild(0).title = "Node One"
+      m.markupgrid.content.getChild(1).title = "Node Two"
+      m.markupgrid.content.getChild(2).title = "Node Three"
+      m.markupgrid.content.getChild(3).title = "Node Four"
+      ?m.markupgrid.content.getChild(0)
+    end sub
+
+    function onKeyEvent(key as string, press as boolean) as boolean
+      if key = "right" and m.exampleMiniKeyboard.isInFocusChain() then
+          m.markupGrid.setFocus(true)
+          return true
+      else if key = "left" and m.markupGrid.isInFocusChain() then
+          m.exampleMiniKeyboard.setFocus(true)
+          return true
+      end if
+      return false
+    end function
 
     ]]>
 
@@ -23,6 +46,13 @@
 
     <MiniKeyboard id = "exampleMiniKeyboard" />
 
+    <MarkupGrid 
+      id = "exampleMarkupGrid"
+      translation = "[ 425, 0 ]"
+      itemComponentName = "MarkupGridItem"
+      numColumns = "2"
+      numRows = "5"
+      itemSize = "[ 364, 261 ]"
+      drawFocusFeedback = "false" />
   </children>
-
 </component>

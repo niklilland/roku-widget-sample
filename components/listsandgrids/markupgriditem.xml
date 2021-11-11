@@ -40,14 +40,14 @@
     <Poster 
       id = "itemPoster" 
       translation = "[ 10, 10 ]" 
-      width = "512" 
-      height = "288" 
+      width = "364" 
+      height = "261" 
       scaleRotateCenter = "[ 256.0, 144.0 ]" >
 
       <Rectangle 
         id = "itemMask" 
-        width = "512" 
-        height = "288" 
+        width = "364" 
+        height = "261" 
         scaleRotateCenter = "[ 256.0, 144.0 ]" 
         color = "0x101010FF" 
         opacity = "0.75" />
